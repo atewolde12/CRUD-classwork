@@ -1,43 +1,39 @@
-<h2 class="center" >User Table</h2>
+<h2 class="center">User Table</h2>
 <table class="table">
-    <thread>
+    <thead>
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Zip Code</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-    </thread>
+    </thead>
     <tbody>
-        <% users.forEach(user =>{ %>
+        <% users.forEach(user => { %>
             <tr>
                 <td>
-                    <a href= "<%=`/users/$user._id`%>">
-                        <%= user.name %>
+                    <a href="<%= `/users/${user._id}` %>">
+                        <%= user.fullName %>
                     </a>
                 </td>
                 <td>
                     <%= user.email %>
                 </td>
                 <td>
-                    <% user.zipCode %>
+                    <%= user.zipCode %>
                 </td>
                 <td>
-                    <a href="`<% users/${user._id}/edit`%>">
+                    <a href="<%= `users/${user._id}/edit` %>">
                         Edit
                     </a>
                 </td>
                 <td>
-                    <a href="`< %users/${user._id}delete?_method-DELETE`%>" onclick="return confirm('Are you sure?')">
+                    <a href="<%= `users/${user._id}/delete?_method=DELETE` %>" onclick="return confirm(`Are you sure?`)">
                         Delete
                     </a>
                 </td>
-
             </tr>
-           
-            
-
-
-       <% })%>
+       <% }) %>
     </tbody>
 </table>

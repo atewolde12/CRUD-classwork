@@ -2,6 +2,7 @@
 
 const User = require("../models/user");
 
+
 module.exports = {
     index: (req, res, next) => {
         User.find()
@@ -14,12 +15,14 @@ module.exports = {
                 next(error);
             })
     },
+
     indexView: (req, res) => {
         res.render("users/index");
     },
     new: (req, res) => {
         res.render("users/new");
     },
+
     create: (req, res, next) => {
         let newUser = new User({
             name: {first: req.body.first, last: req.body.last},
@@ -38,11 +41,13 @@ module.exports = {
                 next(error)
             })
     },
+
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
         if (redirectPath != undefined) res.redirect(redirectPath);
         else next();
     },
+    
     show: (req, res, next) => {
         let userId = req.params.id;
         User.findById(userId)
@@ -55,9 +60,11 @@ module.exports = {
                 next(error)
             })
     },
+
     showView: (req, res) => {
         res.render("users/show");
     },
+
     edit: (req, res, next) => {
         let userId = req.params.id;
         User.findById(userId)
@@ -69,6 +76,7 @@ module.exports = {
                 next(error);
             })
     },
+
     update: (req, res, next) => {
         let userId = req.params.id;
         let updatedUser = new User({
@@ -90,6 +98,7 @@ module.exports = {
                 next(error);
             })
     },
+    
     delete: (req, res, next) => {
         let userId = req.params.id;
         User.findByIdAndRemove(userId)

@@ -14,12 +14,15 @@ module.exports = {
                 next(error);
             })
     },
+
     indexView: (req, res) => {
         res.render("subscribers/index");
     },
+
     new: (req, res) => {
         res.render("subscribers/new");
     },
+
     create: (req, res, next) => {
         let newSubscriber = new Subscriber({
             name: req.body.name,
@@ -57,6 +60,8 @@ module.exports = {
     showView: (req, res) => {
         res.render("subscribers/show");
     },
+
+    
     edit: (req, res, next) => {
         let subscriberId = req.params.id;
         Subscriber.findById(subscriberId)

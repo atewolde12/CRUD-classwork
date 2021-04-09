@@ -1,18 +1,18 @@
-<h2 class="center" >Subscriber Table</h2>
+<h2 class="center">Subscriber Table</h2>
 <table class="table">
-    <thread>
+    <thead>
         <tr>
-            <th>Name</th>
+            <th>Name of Subscriber</th>
             <th>Email</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-    </thread>
+    </thead>
     <tbody>
-        <% subscribers.forEach(subscriber =>{ %>
+        <% subscribers.forEach(subscriber => { %>
             <tr>
                 <td>
-                    <a href= "<%=`/subscribers/$subscriber._id`%>">
+                    <a href="<%= `/subscribers/${subscriber._id}` %>">
                         <%= subscriber.name %>
                     </a>
                 </td>
@@ -20,24 +20,19 @@
                     <%= subscriber.email %>
                 </td>
                 <td>
-                    <% subscriber.zipCode %>
+                    <%= subscriber.zipCode %>
                 </td>
                 <td>
-                    <a href="`<% subscribers/${subscriber._id}/edit`%>">
+                    <a href="<%= `subscribers/${subscriber._id}/edit` %>">
                         Edit
                     </a>
                 </td>
                 <td>
-                    <a href="`< %subscribers/${subscriber._id}delete?_method-DELETE`%>" onclick="return confirm('Are you sure?')">
+                    <a href="<%= `subscribers/${subscriber._id}/delete?_method=DELETE` %>" onclick="return confirm(`Are you sure?`)">
                         Delete
                     </a>
                 </td>
-
             </tr>
-           
-            
-
-
-       <% })%>
+       <% }) %>
     </tbody>
 </table>

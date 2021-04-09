@@ -10,7 +10,7 @@ module.exports = {
                 next()
             })
             .catch(error => {
-                console.log(`Error fetching course data: ${error.message}`)
+                console.log(`Error gathering course data: ${error.message}`)
                 next(error);
             })
     },
@@ -20,6 +20,7 @@ module.exports = {
     new: (req, res) => {
         res.render("courses/new");
     },
+    
     create: (req, res, next) => {
         let newCourse = new Course({
             title: req.body.title,
@@ -51,10 +52,11 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching course by ID: ${error.message}`);
+                console.log(`Error gathering course by ID: ${error.message}`);
                 next(error)
             })
     },
+
     showView: (req, res) => {
         res.render("courses/show");
     },
@@ -65,10 +67,11 @@ module.exports = {
                 res.render("courses/edit", { course: course });
             })
             .catch(error => {
-                console.log(`Error fetching course by ID: ${error.message}`);
+                console.log(`Error gathering course by ID: ${error.message}`);
                 next(error);
             })
     },
+
     update: (req, res, next) => {
         let courseId = req.params.id;
         let updatedCourse = new Course({
@@ -86,10 +89,11 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching course by ID: ${error.message}`);
+                console.log(`Error gathering course by ID: ${error.message}`);
                 next(error);
             })
     },
+
     delete: (req, res, next) => {
         let courseId = req.params.id;
         Course.findByIdAndRemove(courseId)
@@ -98,7 +102,7 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching course by ID: ${error.message}`);
+                console.log(`Error gathering course by ID: ${error.message}`);
                 next(error);
             })
     }

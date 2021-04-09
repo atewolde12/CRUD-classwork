@@ -1,5 +1,4 @@
 "use strict";
-
 const express = require("express"), 
 app = express(),
 router = express.Router(),
@@ -28,12 +27,9 @@ router.use(
 );
 
 router.use(methodOverride("_method", {methods: ['POST', 'GET']}));
-
 router.use(express.json());
 
-
 router.get("/", homeController.index);
-
 
 router.get("/subscribers", subscribersController.index, subscribersController.indexView);
 router.get("/subscribers/new", subscribersController.new);

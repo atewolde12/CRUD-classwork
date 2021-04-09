@@ -6,12 +6,12 @@ var courses = [
         cost: 50
     },
     {
-        title: "Borscht",
+        title: "Apple Pie",
         cost: 80
     },
     {
-        title: "Burger",
-        cost: 99
+        title: "Pizza Pizza",
+        cost: 100
     }
 ]
 

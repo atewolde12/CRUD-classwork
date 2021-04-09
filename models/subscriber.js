@@ -1,6 +1,5 @@
 "use strict";
 const Course = require("./course");
-
 const mongoose = require("mongoose"),
     subscriberSchema = mongoose.Schema({
         name: {
@@ -22,7 +21,6 @@ const mongoose = require("mongoose"),
     }, {
         timestamps: true
     });
-
 subscriberSchema.methods.getInfo = function() {
     return `Name ${this.name} Email: ${this.email} Zipcode: ${this.zipCode}`;
 }

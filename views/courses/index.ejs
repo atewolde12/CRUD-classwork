@@ -1,18 +1,18 @@
-<h2 class="center" >Course Table</h2>
+<h2 class="center">Course Table</h2>
 <table class="table">
-    <thread>
+    <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Title of Course</th>
+            <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-    </thread>
+    </thead>
     <tbody>
-        <% courses.forEach(course =>{ %>
+        <% courses.forEach(course => { %>
             <tr>
                 <td>
-                    <a href= "<%=`/courses/$course._id`%>">
+                    <a href="<%= `/courses/${course._id}` %>">
                         <%= course.title %>
                     </a>
                 </td>
@@ -20,21 +20,16 @@
                     <%= course.description %>
                 </td>
                 <td>
-                    <a href="`<% courses/${course._id}/edit`%>">
+                    <a href="<%= `courses/${course._id}/edit` %>">
                         Edit
                     </a>
                 </td>
                 <td>
-                    <a href="`< %courses/${course._id}delete?_method-DELETE`%>" onclick="return confirm('Are you sure?')">
+                    <a href="<%= `courses/${course._id}/delete?_method=DELETE` %>" onclick="return confirm(`Are you sure?`)">
                         Delete
                     </a>
                 </td>
-
             </tr>
-           
-            
-
-
-       <% })%>
+       <% }) %>
     </tbody>
 </table>
