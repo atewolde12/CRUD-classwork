@@ -11,7 +11,7 @@ module.exports = {
                 next()
             })
             .catch(error => {
-                console.log(`Error fetching user data: ${error.message}`)
+                console.log(`Error gathering user data: ${error.message}`)
                 next(error);
             })
     },
@@ -56,7 +56,7 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
+                console.log(`Error gathering user by ID: ${error.message}`);
                 next(error)
             })
     },
@@ -72,7 +72,7 @@ module.exports = {
                 res.render("users/edit", { user: user });
             })
             .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
+                console.log(`Error gathering user by ID: ${error.message}`);
                 next(error);
             })
     },
@@ -94,11 +94,11 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
+                console.log(`Error gathering user by ID: ${error.message}`);
                 next(error);
             })
     },
-    
+
     delete: (req, res, next) => {
         let userId = req.params.id;
         User.findByIdAndRemove(userId)
@@ -107,7 +107,7 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`Error fetching user by ID: ${error.message}`);
+                console.log(`Error gathering user by ID: ${error.message}`);
                 next(error);
             })
     }
