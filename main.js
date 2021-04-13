@@ -1,7 +1,7 @@
 "use strict";
 
-const cookieParser = require("cookie-parser");
-const passport = require("passport");
+
+
 
 
 const express = require("express"), 
@@ -14,7 +14,7 @@ mongoose = require("mongoose"),
 methodOverride = require("method-override"),
 subscribersController = require("./controllers/subscribersController"),
 usersController = require("./controllers/usersController"),
-coursesController = require("./controllers/coursesController");
+coursesController = require("./controllers/coursesController"),
 passport = require("passport"),
 cookieParser = require("cookie-parser"),
 expressSession = require("express-session"),
@@ -57,7 +57,7 @@ router.use(expressSession({
 
 router.use(connectFlash());
 
-router.user(passport.initialize());
+router.use(passport.initialize());
 router.use(passport.session());
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser);
