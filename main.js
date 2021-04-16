@@ -2,8 +2,6 @@
 
 
 
-
-
 const express = require("express"), 
 app = express(),
 router = express.Router(),
@@ -51,23 +49,21 @@ router.use(expressSession({
     },
     resave: false,
     saveUninitialized: false
-
-
 }));
 
-router.use(connectFlash());
 
 router.use(passport.initialize());
 router.use(passport.session());
 passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser);
-passport.deserializeUser(User.deserializeUser);
-
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+router.use(connectFlash());
 
 router.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
-    res.locals.loggedIn = req.isUnauthenticated();
+    res.locals.loggedIn = req.isAuthenticated();
     res.locals.currentUser = req.user;
+    next();
 })
 
 router.get("/", homeController.index);
@@ -90,11 +86,8 @@ router.get("/users/logout", usersController.logout, usersController.redirectView
 
 router.get("/users/:id", usersController.show, usersController.showView);
 router.get("/users/:id/edit", usersController.edit);
-router.put("/users/:id/update",usersController.validate, usersController.update, usersController.redirectView);
+router.put("/users/:id/update", usersController.validate ,usersController.update, usersController.redirectView);
 router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
-
-
-
 
 router.get("/courses", coursesController.index, coursesController.indexView);
 router.get("/courses/new", coursesController.new);
